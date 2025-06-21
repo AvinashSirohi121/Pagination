@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 export const useFetch=({limit,currentPage})=>{
-    console.log("Limit =>",limit,", currentPage =>",currentPage)
+    //console.log("Limit =>",limit,", currentPage =>",currentPage)
 
     const URL = `https://dummyjson.com/products`;
 
@@ -57,8 +57,6 @@ export const useFetch=({limit,currentPage})=>{
                 ...prev,
                 loading:false
             }))
-            console.log("Finally =>",data)
-
         }
     }
     

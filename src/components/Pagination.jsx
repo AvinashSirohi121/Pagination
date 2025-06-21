@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 const Pagination = ({setPageInfo,currentPage,maxPages}) => {
     const [currentPageNum,setCurrentPageNum] = useState(currentPage)
@@ -37,23 +39,25 @@ useEffect(() => {
           }
 
   return (
-    <div className="flex gap-3 justify-between items-center">
+    <div className=" w-full h-full bg-gray-200">
        
+       <div className="float-right  gap-2 flex items-center text-xl">
         <button 
-        className="border-2 p-2 rounded-full font-bold cursor-pointer hover:bg-amber-200"
+        className={`font-bold cursor-pointer hover:text-gray-600 ${currentPage==1 ? "text-gray-400":"text-gray-900"}`}
         disabled={currentPage==1}
-        onClick={()=>handlePageChange("prev")}>{`<`}</button>
+        onClick={()=>handlePageChange("prev")}><FaAngleLeft className="text-2xl"/></button>
         <input 
-        className=" bg-amber-400 w-[20px] decoration-0 text-black appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+        className=" bg-gray-300 border-gray-600 border-2 w-[25px] p-1 decoration-0 text-black appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
         type="number" 
         value={currentPageNum} 
         onChange={(e)=>setCurrentPage(e.target.value)}
         onKeyDown={enterCurrentPage}/>
-        <span>{maxPages}</span>
+        <span>{`/`}{maxPages}</span>
         <button 
-        className="border-2 p-2 rounded-full font-bold cursor-pointer hover:bg-amber-200"
+        className=" font-bold cursor-pointer hover:text-gray-600"
         disabled={currentPage==maxPages}
-        onClick={()=>handlePageChange("next")}>{`>`}</button>
+        onClick={()=>handlePageChange("next")}><FaAngleRight  className="text-2xl"/></button>
+        </div>
     </div>
   )
 }
